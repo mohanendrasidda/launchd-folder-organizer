@@ -189,7 +189,8 @@ def categorize(name, kind, markers, parent):
 
 
 def base_name(name):
-    s = re.sub(r'\s*\(\d+\)\s*$', '', name)
+    stem, _ = os.path.splitext(name)
+    s = re.sub(r'\s*\(\d+\)\s*$', '', stem)
     s = re.sub(r'[\s\-_]+\d+(?:[\s\-_]+\d+)*$', '', s)
     return s.lower()
 
@@ -229,18 +230,18 @@ def organize_root(root, dry_run=False):
         sibling_groups[key].append(p['name'])
 
     bundles = {}
-    for (cat, base), names in sibling_groups.items():
+    for (cat, _base), names in sibling_groups.items():
         existing = []
         cat_dir = os.path.join(root, cat)
+        longest_stem, _ = os.path.splitext(max(names, key=len))
+        prefix = re.sub(r'[\s\-_]+\d+(?:[\s\-_]+\d+)*$', '', longest_stem)
+        prefix = re.sub(r'\s*\(\d+\)\s*$', '', prefix)
         if os.path.isdir(cat_dir):
-            prefix = re.sub(r'[\s\-_]+\d+(?:[\s\-_]+\d+)*$', '', max(names + [''], key=len))
             for sub in os.listdir(cat_dir):
                 if sub.endswith('-versions') and sub.startswith(prefix):
                     existing.append(sub)
         if len(names) >= 2 or existing:
-            clean = re.sub(r'[\s\-_]+\d+(?:[\s\-_]+\d+)*$', '', max(names, key=len))
-            clean = re.sub(r'\s*\(\d+\)\s*$', '', clean)
-            bundle = f"{clean}-versions"
+            bundle = f"{prefix}-versions"
             for n in names:
                 bundles[n] = bundle
 
