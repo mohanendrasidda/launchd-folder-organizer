@@ -1,5 +1,7 @@
 # launchd-folder-organizer
 
+[![tests](https://github.com/mohanendrasidda/launchd-folder-organizer/actions/workflows/tests.yml/badge.svg)](https://github.com/mohanendrasidda/launchd-folder-organizer/actions/workflows/tests.yml)
+
 A small macOS daemon that categorizes new top-level items in `~/Documents` and `~/Downloads` into subfolders by type, on a daily schedule.
 
 ## Why

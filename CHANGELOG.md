@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.3] — 2026-05-21
+
+### Added
+
+- `CONTRIBUTING.md`: contribution guidelines including the no-deps 
+  / no-network / no-sudo invariants the project commits to.
+- `SECURITY.md`: vulnerability disclosure policy with private 
+  reporting link. Notes the limited attack surface (no network, no 
+  deps, no elevated privileges).
+- `.github/workflows/tests.yml`: GitHub Actions CI that runs the 
+  test harness on macOS against Python 3.9 through 3.12 for every 
+  push to `main` and every PR.
+- README: CI badge linking to the Actions workflow results.
+
+### Changed
+
+- None. Existing behavior is unchanged from v0.1.2.
+
 ## [0.1.2] — 2026-05-21
 
 ### Fixed
