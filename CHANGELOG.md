@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] — 2026-05-21
+
+### Fixed
+
+- README: clarified the Full Disk Access step. `OrganizeFolders.app`
+  installs to `~/Applications/` (the user's Applications folder), not
+  `/Applications/` (system). The macOS file picker opens to
+  `/Applications/` by default, so the bundle wasn't visible. Added
+  step-by-step navigation using `⌘⇧G` → `~/Applications`. Thanks to
+  the first cloner for surfacing this.
+
 ## [0.1.1] — 2026-05-20
 
 ### Fixed

@@ -57,8 +57,12 @@ osacompile -e 'do shell script "$HOME/bin/organize-folders.py"' \
 Then:
 
 1. Open **System Settings → Privacy & Security → Full Disk Access**.
-2. Click **+** and add `~/Applications/OrganizeFolders.app`.
-3. Toggle it on.
+2. Click the **+** button to add a new app.
+3. **`OrganizeFolders.app` will not appear in the default sidebar.** The file picker opens to `/Applications/` but `osacompile` installs the bundle to `~/Applications/` (your user Applications folder, not the system one). To navigate there:
+   - Press **⌘⇧G** (Cmd+Shift+G) in the file picker.
+   - Type `~/Applications` and press Return.
+   - Select `OrganizeFolders.app` and click **Open**.
+4. Confirm the toggle next to `OrganizeFolders.app` is **on**.
 
 The plist's `ProgramArguments` points at the applet, so the FDA grant applied to the `.app` flows through to the shell script it spawns. Without this step the first run logs a `PermissionError` and exits.
 
